@@ -1,6 +1,7 @@
 import countTotalFeedback from 'utilits/countTotalFeedback';
 import countPositiveFeedbackPercentage from 'utilits/countPositiveFeedbackPercentage';
 import PropTypes from 'prop-types';
+import css from './Statistics.module.css';
 
 
 export function Statistics({ options }) {
@@ -10,16 +11,18 @@ export function Statistics({ options }) {
     <>
       {good !== 0 || neutral !== 0 || bad !== 0 ? (
         <div className="container">
-          <ul>
-            <li className="item">Good: {good}</li>
-            <li className="item">Neutral: {neutral}</li>
-            <li className="item">Bad: {bad}</li>
-            <li className="item">total: {countTotalFeedback(options)}</li>
-            <li className='item'>Positive Feedback: {countPositiveFeedbackPercentage(options)}%</li>
+          <ul className={css.list}>
+            <li className={css.item}>Good: {good}</li>
+            <li className={css.item}>Neutral: {neutral}</li>
+            <li className={css.item}>Bad: {bad}</li>
+            <li className={css.item}>total: {countTotalFeedback(options)}</li>
+            <li className={css.item}>
+              Positive Feedback: {countPositiveFeedbackPercentage(options)}%
+            </li>
           </ul>
         </div>
       ) : (
-        <p className="">No feedback given</p>
+          <p className={ css.text}>No feedback given</p>
       )}
     </>
   );
